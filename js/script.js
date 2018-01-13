@@ -82,6 +82,26 @@ var media = [
 	medium8			
 ];	
 
+// this is used for validation (following the examples provided by the bootstrap docu in the internet)
+ window.addEventListener('load', function() {
+    var form = document.getElementById('needs-validation');
+    form.addEventListener('submit', function(event) {
+      var authorVal = document.getElementById("author").value.trim();
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      if ( (authorVal == "Danielle Steel") || (authorVal == "Roland Emmerich")){
+        alert ("Yawn!!! Please choose another option ...");
+        document.getElementById("authorReject").innerHTML = "I do not want to save this!!!";
+        event.preventDefault();
+        event.stopPropagation();        
+      }
+      form.classList.add('was-validated');
+      addMedium();
+    }, false);
+  }, false);
+
 // set the value of environment (can be "xs", "sm", "md", "lg")
 var environ = getResponsiveBreakpoint();
 
@@ -223,13 +243,17 @@ function resetFormValues() {
 // if radio button for book is selected, hide element with id minutesDiv
 function showBookWeight(){
   document.getElementById('minutesDiv').style.display ='none';
+  document.getElementById('afterMinutesDiv').style.display ='none';  
   document.getElementById('weightDiv').style.display = '';
+  document.getElementById('afterWeightDiv').style.display = '';
   document.getElementById("minutes").value = null;
 }
 
 // if radio button for movies or songs is selected, hide element with id weightDiv
 function showLength(){
   document.getElementById('minutesDiv').style.display = '';
+  document.getElementById('afterMinutesDiv').style.display =''; 
   document.getElementById('weightDiv').style.display ='none';
+    document.getElementById('afterWeightDiv').style.display = 'none';
   document.getElementById("weight").value = null;
 }

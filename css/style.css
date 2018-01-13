@@ -23,6 +23,10 @@ body {
   background:#C13E3E;
 }
 
+.paleTurquoise {
+  color:#AFEEEE;
+}
+
 .row-videos > div {
   padding:0 4px;
 }
@@ -42,4 +46,9 @@ body {
   	border-bottom: 1px solid #333333;
   	border-left: 1px solid #CCCCCC;
   	border-radius: 12px;
+}
+
+.navbar {
+    background-color: #AFEEEE;
+    border-color: #E7E7E7;
 }

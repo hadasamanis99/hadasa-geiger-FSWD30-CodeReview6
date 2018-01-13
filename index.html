@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>My Media Thek</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> 
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link href="css/style.css" rel="stylesheet">
   <script
@@ -13,11 +13,23 @@
    <script src="js/script.js"></script> 
 </head>
 <!-- when the HTML loads, writeMedia() is called.
-This function will write HTML to the div with  id="firstPos" -->
+This function will write HTML to the div with  id="firstPos" --> 
 <body onload="writeMedia()">
-  <nav class="navbar navbar-expand-sm navbar-light red">
-    <a class="navbar-brand" href="#" style="color:#fff;font-weight:700">My Media Thek</a>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light paleTurquoise">
+  <a class="navbar-brand" href="#">My Mediatheque</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#needs-validation">Add new medium</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
   <div class="container videos pb-4">
     <!-- The media go here -->
     <div class="container video-row" id="firstPos">
@@ -40,7 +52,7 @@ This function will write HTML to the div with  id="firstPos" -->
       <input type="radio" name="optradio" onclick="showLength()">Other
   </label>
   <div class="input-group">
-    <span class="input-group-addon">Title: &nbsp; </span>
+    <span class="input-group-addon">Book/Video/CD: &nbsp; </span>
     <input id="title" type="text" class="form-control" name="title" placeholder="Please specify the title ..." required>
     <div class="invalid-feedback">
         Please provide a valid title.
@@ -54,7 +66,6 @@ This function will write HTML to the div with  id="firstPos" -->
         Please provide a valid author.
      </div>
      <span class="glyphicon glyphicon-warning-sign invalid-feedback"></span>
-     <span class="glyphicon glyphicon-remove invalid-feedback"></span>
   </div>
   <br>
   <div class="input-group">
@@ -65,11 +76,17 @@ This function will write HTML to the div with  id="firstPos" -->
   <div class="input-group">
     <span class="input-group-addon">Genre:&nbsp;  </span>
     <input id="genre" type="text" class="form-control" name="genre" placeholder="Please specify genre or comma separated list of genres ..." required>
+    <div class="invalid-feedback" id="authorReject">
+        Please provide a valid list of genres (at least one genre, if more then separate by comma.
+     </div>
   </div>
   <br>
   <div class="input-group">
     <span class="input-group-addon">Url: &nbsp; </span>
     <input id="image" type="text" class="form-control" name="image" placeholder="Please specify image URL ..." required>
+    <div class="invalid-feedback" id="authorReject">
+        Please provide a valid URL.
+     </div>
   </div>
   <br>
   <div class="input-group">
@@ -79,50 +96,22 @@ This function will write HTML to the div with  id="firstPos" -->
   <br>
   <div class="input-group" id="minutesDiv">
     <span class="input-group-addon">Minutes: &nbsp; </span>
-    <input id="minutes" type="number" class="form-control" name="minutes" placeholder="Please specify minutes (not for books) ..." min="1" max="500">
+    <input id="minutes" type="number" class="form-control" name="minutes" placeholder="Please specify minutes (not for books) ..." min="1" max="500">   
   </div>
-  <br>
+  <div id="afterMinutesDiv"> <br> </div>
   <div class="input-group" id="weightDiv">
     <span class="input-group-addon">Weight:&nbsp;  </span>
-    <input id="weight" type="number" class="form-control" name="weight" placeholder="Please specify weight (optional, only for books)) ..." min="1" max="20">
-  </div>
+    <input id="weight" type="number" class="form-control" name="weight" placeholder="Please specify weight (optional, only for books)) ..." min="1" max="20">    
+  </div> 
+  <div id="afterWeightDiv"> <br> </div>
   <br>
-  <br>
-  <!--  
-  <button type="submit"  class="likeAButton">Add</button>
-  -->
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Add</button>
 </form> 
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
 
-  window.addEventListener('load', function() {
-    var form = document.getElementById('needs-validation');
-    form.addEventListener('submit', function(event) {
-      var authorVal = document.getElementById("author").value.trim();
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      if ( (authorVal == "Danielle Steel") || (authorVal == "Roland Emmerich")){
-        alert ("Yawn!!! Please choose another option ...");
-        document.getElementById("authorReject").innerHTML = "I do not want to save this!!!";
-        event.preventDefault();
-        event.stopPropagation();        
-      }
-      
-     // if ((authorVal == "Danielle Steel") || (authorVal == "Roland Emmerich")) {
-       //   alert ("Yawn!!! Please choose another option ...");
-      //}
-      form.classList.add('was-validated');
-      addMedium();
-    }, false);
-  }, false);
-})();
-</script>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
 </html>
