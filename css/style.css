@@ -1,0 +1,45 @@
+body {
+  background:#eee;
+}
+
+.videos {
+  background:#ddd;
+}
+
+
+.video-row h1 {
+  padding:4px;
+  margin:0;
+  font-size:18px;
+}
+
+.video {
+  background:#AA8080;
+  height:auto;
+  padding-top: 6.25%;
+}
+
+.red {
+  background:#C13E3E;
+}
+
+.row-videos > div {
+  padding:0 4px;
+}
+
+.row-videos .video {
+  margin-bottom:8px;
+}
+
+.likeAButton {
+  	font: bold 20px Arial;
+  	text-decoration: none;
+  	background-color: #EEEEEE;
+  	color: #483D8B;
+  	padding: 10px 20px 10px 20px;
+  	border-top: 1px solid #CCCCCC;
+  	border-right: 1px solid #333333;
+  	border-bottom: 1px solid #333333;
+  	border-left: 1px solid #CCCCCC;
+  	border-radius: 12px;
+}
